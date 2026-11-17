@@ -1,0 +1,21 @@
+TALLER 1 - BIBLIORED
+Estudiante: Abdel Cristancho
+
+Requisitos:
+- MySQL Server 8.0.16 o superior
+- MySQL Workbench
+
+Orden:
+1. 01_ddl.sql
+2. 02_dml.sql
+3. 03_dql.sql
+4. 04_dql_avanzado.sql
+5. 05_tcl.sql
+
+El archivo 00_diagrama.md contiene el modelo ER en Mermaid.
+El archivo README.md contiene una explicación breve del proyecto.
+06_retos.sql es opcional.
+
+Importante:
+Las sentencias comentadas como ERROR ESPERADO se ejecutan individualmente,
+porque su objetivo es demostrar que MySQL rechaza una operación inválida.
