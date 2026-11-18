@@ -203,4 +203,35 @@ CALL sp_reporte_sedes('2026-11-10');
 -- ESPERADO: ERROR 1644 - La multa no está pendiente.
 -- CALL sp_pagar_multa(1,100,'EFECTIVO','2026-11-10');
 
+DROP PROCEDURE IF EXISTS sp_prestar_ejemplar_tx;
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_prestar_ejemplar_tx(
+    IN p_copy_id BIGINT,
+    IN p_member_id BIGINT,
+    IN p_employee_id BIGINT,
+    IN p_loan_date DATE
+)
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        RESIGNAL;
+    END;
+
+    START TRANSACTION;
+
+    CALL sp_prestar_ejemplar(
+        p_copy_id,
+        p_member_id,
+        p_employee_id,
+        p_loan_date
+    );
+
+    COMMIT;
+END$$
+
+DELIMITER ;
+
 SHOW PROCEDURE STATUS WHERE Db='bibliored';
